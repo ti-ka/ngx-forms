@@ -1,0 +1,77 @@
+
+<ng-container *ngIf="form">
+
+  <form [formGroup]="formGroup" (submit)="submitForm()" class="ngx-form {{ form.cssClass }}">
+
+    <section *ngFor="let section of form.sections" class="ngx-section {{ section.cssClass }}">
+
+      <div
+        *ngFor="let group of section.groups"
+        [formGroupName]="group.name"
+        class="ngx-group {{ group.cssClass }}">
+
+        <div *ngFor="let question of group.questions" class="ngx-question {{ question.cssClass }}">
+          <label [for]="question.id" [attr.inputtype]="question.type">{{ question.title }}</label>
+          <ng-container *ngIf="question.type === 'textarea' else radio">
+            <textarea
+              [name]="question.name"
+              [formControlName]="question.name"
+              [rows]="question.lines || 3"
+              [id]="question.id">{{ question.value }}</textarea>
+          </ng-container>
+          <ng-template #radio>
+            <ng-container *ngIf="question.type === 'radio' else select">
+                <div *ngFor="let option of question.options" class="radio-group">
+                  <input [type]="question.type" class="inline-block"
+                         [value]="option.value"
+                         [formControlName]="question.name"
+                         [checked]="question.value == option.value"
+                         [name]="question.name" />
+                  <label class="inline-block">{{ option.title }}</label>
+                </div>
+            </ng-container>
+          </ng-template>
+          <ng-template #select>
+            <select *ngIf="question.type === 'select' else file"
+                   [id]="question.id"
+                   [value]="question.value"
+                   [formControlName]="question.name"
+                   [name]="question.name">
+              <option *ngFor="let option of question.options" [value]="option.value">{{ option.title }}</option>
+            </select>
+          </ng-template>
+          <ng-template #file>
+            <ng-container *ngIf="question.type === 'file' else otherInput">
+              <input
+                  class="no-display"
+                  [id]="question.id"
+                  [name]="question.name"
+                  [value]="question.value || null"
+                  [formControlName]="question.name"
+                  #filename
+                  type="text" />
+              <input
+                   [type]="question.type"
+                   #fileupload
+                   (change)="fileSelected($event, fileupload, filename)"
+                   [accept]="question.accept" />
+            </ng-container>
+          </ng-template>
+          <ng-template #otherInput>
+            <input
+              [id]="question.id"
+              [name]="question.name"
+              [formControlName]="question.name"
+              [value]="question.value || null"
+              [type]="question.type"/>
+          </ng-template>
+        </div>
+      </div>
+    </section>
+
+  </form>
+
+</ng-container>
+
+<pre>{{ formGroup.value | json }}</pre>
+<pre>{{ form | json }}</pre>
