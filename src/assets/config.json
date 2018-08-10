@@ -67,11 +67,11 @@
         {
             "groups": [
                 {
-                    "id": "filesx",
+                    "id": "files",
                     "questions": [
                         {
-                            "id": "imagex",
-                            "name": "imagex",
+                            "id": "image",
+                            "name": "image",
                             "title": "Upload a picture:",
                             "type": "file",
                             "accept": "image/*"
