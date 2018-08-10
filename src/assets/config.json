@@ -1,98 +1,97 @@
 {
-  "submitUrl": "/submit",
-  "successUrl": "/dashboard",
-  "successMessage": "Your form has been saved.",
-  "method": "POST",
-  "sections": [
-    {
-      "groups": [
+    "submitUrl": "/submit",
+    "successUrl": "/dashboard",
+    "successMessage": "Your form has been saved.",
+    "method": "POST",
+    "sections": [
         {
-          "name": "basic",
-          "questions": [
-            {
-              "id": "name",
-              "name": "name",
-               "title": "What is your name?",
-              "type": "text"
-            },
-            {
-              "id": "gender",
-              "name": "gender",
-              "title": "Gender",
-              "type": "radio",
-              "value": 2,
-              "options": [
+            "groups": [
                 {
-                  "value": 1,
-                  "title": "Male"
-                },
-                {
-                  "value": 2,
-                  "title": "Female"
-                },
-                {
-                  "value": 3,
-                  "title": "Other"
+                    "name": "basic",
+                    "questions": [
+                        {
+                            "id": "name",
+                            "name": "name",
+                            "title": "What is your name?",
+                            "type": "text"
+                        },
+                        {
+                            "id": "gender",
+                            "name": "gender",
+                            "title": "Gender",
+                            "type": "radio",
+                            "value": 2,
+                            "options": [
+                                {
+                                    "value": 1,
+                                    "title": "Male"
+                                },
+                                {
+                                    "value": 2,
+                                    "title": "Female"
+                                },
+                                {
+                                    "value": 3,
+                                    "title": "Other"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "religion",
+                            "name": "religion",
+                            "title": "Religion",
+                            "type": "select",
+                            "value": 1,
+                            "options": [
+                                {
+                                    "value": 1,
+                                    "title": "Buddhism"
+                                },
+                                {
+                                    "value": 2,
+                                    "title": "Everything else"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "about",
+                            "name": "about",
+                            "title": "Write a paragraph about yourself:",
+                            "type": "textarea",
+                            "lines": 3
+                        }
+                    ]
                 }
-              ]
-            },
-            {
-              "id": "religion",
-              "name": "religion",
-              "title": "Religion",
-              "type": "select",
-              "value": 1,
-              "options": [
-                {
-                  "value": 1,
-                  "title": "Buddhism"
-                },
-                {
-                  "value": 2,
-                  "title": "Everything else"
-                }
-              ]
-            },
-            {
-              "id": "about",
-              "name": "about",
-              "title": "Write a paragraph about yourself:",
-              "type": "textarea",
-              "lines": 3
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "groups": [
-        {
-          "id": "files",
-          "name": "files",
-          "questions": [
-            {
-              "id": "image",
-              "name": "image",
-              "title": "Upload a picture:",
-              "type": "file",
-              "accept": "image/*"
-            }
-          ]
+            ]
         },
         {
-          "id": "submit",
-          "name": "image",
-          "questions": [
-            {
-              "id": "submit",
-              "name": "submit",
-              "type": "submit",
-              "value": "Submit Form",
-              "cssClass": "submit-btn"
-            }
-          ]
+            "groups": [
+                {
+                    "id": "filesx",
+                    "questions": [
+                        {
+                            "id": "imagex",
+                            "name": "imagex",
+                            "title": "Upload a picture:",
+                            "type": "file",
+                            "accept": "image/*"
+                        }
+                    ]
+                },
+                {
+                    "id": "submit",
+                    "name": "submit",
+                    "questions": [
+                        {
+                            "id": "submit",
+                            "name": "submit",
+                            "type": "submit",
+                            "value": "Submit Form",
+                            "cssClass": "submit-btn"
+                        }
+                    ]
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

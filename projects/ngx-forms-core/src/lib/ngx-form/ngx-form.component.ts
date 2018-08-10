@@ -46,18 +46,25 @@ export class NgxFormComponent implements OnInit {
             .forEach(group => {
                 const formGroupItems = {};
                 group.questions.forEach(q => {
-                    formGroupItems[q.id] = new FormControl(q.value);
+                    if (group.name) {
+                        formGroupItems[q.name] = new FormControl(q.value);
+                    } else {
+                        formGroupModel[q.name] = new FormControl(q.value);
+                    }
                 });
-                formGroupModel[group.name] = new FormGroup(formGroupItems);
+                if (Object.keys(formGroupItems).length > 0) {
+                    formGroupModel[group.name] = new FormGroup(formGroupItems);
+                }
             });
 
+        console.log(formGroupModel);
         this.formGroup = new FormGroup(formGroupModel);
     }
 
     fileSelected(event, uploadControl, filenameControl) {
         // perhaps upload the file and fetch name
         filenameControl.value = uploadControl.value;
-        this.formGroup.value['files']['image'] = filenameControl.value;
+        this.formGroup.value['image'] = filenameControl.value;
     }
 
 }
